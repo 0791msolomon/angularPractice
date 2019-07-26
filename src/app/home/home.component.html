@@ -1,7 +1,22 @@
 <h1>Welcome</h1>
 <div class="play-container">
   <p>
-    You've clicked <span (click)="countClick()">this </span>
-    {{ counter }} times.
+    You've clicked <span (click)="countClick()">this</span>
+    {{ clickCounter }} times.
   </p>
+</div>
+<div class="play-container">
+  <p>
+    <input type="text" [(ngModel)]="name" />
+    <br />
+    <strong>You said: </strong> {{ name }}
+  </p>
+</div>
+<div class="play-container" [ngClass]="setClasses()">
+  <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none">
+    <h4>You've clicked more than four times!</h4>
+  </ng-template>
+  <ng-template #none>
+    <h4>You haven't clicked more than 4 times</h4>
+  </ng-template>
 </div>
